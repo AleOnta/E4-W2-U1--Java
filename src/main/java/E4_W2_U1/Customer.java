@@ -5,4 +5,10 @@ public class Customer {
     String name;
     int tier;
 
+    public Customer(String n, int t) {
+        id = Runnable.generateId();
+        name = n;
+        tier = t;
+    }
+
 }

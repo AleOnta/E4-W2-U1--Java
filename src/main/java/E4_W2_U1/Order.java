@@ -10,4 +10,13 @@ public class Order {
     LocalDate deliveryDate;
     List<Product> products;
     Customer customer;
+
+    public Order(String s, LocalDate od, LocalDate dd, List<Product> p, Customer c) {
+        id = Runnable.generateId();
+        status = s;
+        orderDate = od;
+        deliveryDate = dd;
+        products = p;
+        customer = c;
+    }
 }

@@ -9,14 +9,13 @@ public class Product {
     double price;
 
     public Product(String n, String c, double p) {
-        id = generateId();
+        id = Runnable.generateId();
         name = n;
         category = c;
         price = p;
     }
 
-    public long generateId() {
-        Random rand = new Random();
-        return Math.abs(rand.nextLong());
+    public void getId() {
+        System.out.println(id);
     }
 }
