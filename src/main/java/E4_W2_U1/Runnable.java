@@ -4,8 +4,10 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,23 +26,27 @@ public class Runnable {
         System.out.println(res1);
 
         // Exercise 2
-        generateOrders(productList, customersList);
+
+        List<Order> orderList = generateOrders(productList, customersList);
+        List<Product> res2 = orderList.stream()
+                .map(order -> order.products)
+                .flatMap(Collection::stream)
+                .filter(product -> product.category.equals("Baby"))
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println("\nExercise 2 LIST RESULT:");
+        System.out.println(res2);
+
 
         // Exercise 3
-        List<Product> res2 = productList.stream()
+        List<Product> res3 = productList.stream()
                 .filter(product -> product.category.equals("Boys"))
                 .map(product -> applyDiscount(product))
                 .collect(Collectors.toList());
-        System.out.println("Exercise 3 LIST RESULT:");
-        System.out.println(res2);
+        System.out.println("\nExercise 3 LIST RESULT:");
+        System.out.println(res3);
 
         // Exercise 4
-    }
-
-
-    public static Product applyDiscount(Product p) {
-        p.price -= p.calculateDiscount();
-        return p;
     }
 
     protected static long generateId() {
@@ -138,5 +144,10 @@ public class Runnable {
                 lc.get(4)
         ));
         return ordersList;
+    }
+
+    public static Product applyDiscount(Product p) {
+        p.price -= p.calculateDiscount();
+        return p;
     }
 }
