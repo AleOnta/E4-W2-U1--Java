@@ -18,4 +18,14 @@ public class Product {
     public void getId() {
         System.out.println(id);
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id = " + id +
+                ", name = '" + name + '\'' +
+                ", category = " + category + '\'' +
+                ", price = " + price +
+                '}';
+    }
 }
