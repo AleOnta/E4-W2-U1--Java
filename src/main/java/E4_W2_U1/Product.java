@@ -1,5 +1,6 @@
 package E4_W2_U1;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Product {
@@ -19,13 +20,18 @@ public class Product {
         System.out.println(id);
     }
 
+    public double calculateDiscount() {
+       return (price * 10) / 100;
+    }
+
     @Override
     public String toString() {
-        return "Product{" +
+        DecimalFormat df = new DecimalFormat("0.00");
+        return "Product { " +
                 "id = " + id +
                 ", name = '" + name + '\'' +
                 ", category = " + category + '\'' +
-                ", price = " + price +
-                '}';
+                ", price = " + df.format(price)+"€" +
+                " }";
     }
 }
